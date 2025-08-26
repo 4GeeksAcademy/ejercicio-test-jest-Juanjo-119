@@ -1,16 +1,13 @@
-const fromDollarToYen = (dollar) => {
-    const rate = 156.5;
-    return dollar * rate;
+const oneEuroIs = {
+  USD: 1.07,
+  JPY: 156.5,
+  GBP: 0.85,
 };
 
-const fromEuroToDollar = (euro) => {
-    const rate = 1.07;
-    return euro * rate;
-};
+const fromEuroToDollar = (euro) => euro * oneEuroIs.USD;
 
-const fromYenToPound = (yen) => {
-    const rate = 0.87;
-    return yen * rate;
-};
+const fromDollarToYen = (dollar) => (dollar / oneEuroIs.USD) * oneEuroIs.JPY;
 
-module.exports = { fromDollarToYen, fromEuroToDollar, fromYenToPound };
+const fromYenToPound = (yen) => (yen / oneEuroIs.JPY) * oneEuroIs.GBP;
+
+module.exports = { oneEuroIs, fromEuroToDollar, fromDollarToYen, fromYenToPound };
